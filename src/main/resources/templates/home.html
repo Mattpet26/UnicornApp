@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+<h1>Welcome to the Unicorn Ranch</h1>
+
+<div th:each="item : ${locations}">
+    <h1 th:text="${item.Name}"></h1>
+    <div th:each="unicorn : ${item.Unicorns}">
+        <p th:text="${unicorn.Name}"></p>
+    </div>
+</div>
+
+<br>
+
+<form action="/moveunicorn" type="POST">
+    <legend>Move Unicorn to new location</legend>
+    Unicorn Name: <input type="text" name="UnicornName">
+    Location: <input type="text" name="Location">
+    <input type="submit">
+</form>
+
+<br>
+
+<form action="/addunicorn" type="POST">
+    <legend>Add a new unicorn</legend>
+    Unicorn Name: <input type="text" name="UnicornName">
+    Unicorn Color: <input type="text" name="UnicornColor">
+    Favorite Food: <input type="text" name="FavoriteFood">
+    <input type="submit">
+</form>
+
+</body>
+</html>
